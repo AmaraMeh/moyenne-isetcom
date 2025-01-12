@@ -2,35 +2,12 @@ document.addEventListener('DOMContentLoaded', function() {
     // Only handle auth UI if the elements exist
     const authButtons = document.getElementById('authButtons');
     const userMenu = document.getElementById('userMenu');
-    const token = localStorage.getItem('token');
     
     // Only update UI elements if they exist (on pages that have them)
     if (authButtons && userMenu) {
-        if (token) {
-            authButtons.classList.add('hidden');
-            userMenu.classList.remove('hidden');
-        } else {
-            authButtons.classList.remove('hidden');
-            userMenu.classList.add('hidden');
-        }
-    }
-
-    // Only handle login/register page functionality if we're on those pages
-    if (window.location.pathname.includes('login.html') || window.location.pathname.includes('register.html')) {
-        // Tab switching logic for login/register page
-        const tabBtns = document.querySelectorAll('.tab-btn');
-        const tabContents = document.querySelectorAll('.tab-content');
-        
-        tabBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                tabBtns.forEach(t => t.classList.remove('active'));
-                tabContents.forEach(c => c.classList.remove('active'));
-                
-                btn.classList.add('active');
-                const tabId = btn.getAttribute('data-tab');
-                document.getElementById(`${tabId}Tab`)?.classList.add('active');
-            });
-        });
+        // Remove automatic login check, let user choose to login
+        authButtons.classList.remove('hidden');
+        userMenu.classList.add('hidden');
 
         // Handle tab links
         document.querySelectorAll('[data-tab]').forEach(link => {
@@ -54,23 +31,26 @@ async function login(event) {
         const response = await fetch('/api/auth/login', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json',
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify({ email, password })
         });
 
         const data = await response.json();
-        
+
         if (response.ok) {
             localStorage.setItem('token', data.token);
+            localStorage.setItem('user', JSON.stringify(data.user));
             window.location.href = 'index.html';
         } else {
             errorMessage.textContent = data.message || 'Email ou mot de passe incorrect';
             errorMessage.style.display = 'block';
+            // Clear password field for security
+            document.getElementById('loginPassword').value = '';
         }
     } catch (error) {
         console.error('Error:', error);
-        errorMessage.textContent = 'Erreur de connexion';
+        errorMessage.textContent = 'Erreur de connexion au serveur';
         errorMessage.style.display = 'block';
     }
 }
@@ -112,4 +92,26 @@ async function register(event) {
         errorMessage.textContent = 'Erreur de connexion';
         errorMessage.style.display = 'block';
     }
+}
+
+// Add this new function to verify token validity
+async function verifyToken(token) {
+    try {
+        const response = await fetch('/api/auth/verify', {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        });
+        return response.ok;
+    } catch (error) {
+        console.error('Token verification error:', error);
+        return false;
+    }
+}
+
+// Add logout function if not already present
+function logout() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    window.location.href = 'index.html';
 } 
