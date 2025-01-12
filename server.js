@@ -1,13 +1,12 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-const path = require('path');
 require('dotenv').config();
 
 // Import des routes
-const authRoutes = require('../routes/auth');
-const surveysRoutes = require('../routes/surveys');
-const supportRoutes = require('../routes/support');
+const authRoutes = require('./routes/auth');
+const surveysRoutes = require('./routes/surveys');
+const supportRoutes = require('./routes/support');
 
 const app = express();
 
@@ -49,7 +48,7 @@ app.use('/api/surveys', surveysRoutes);
 app.use('/api/support', supportRoutes);
 
 // Connexion MongoDB
-mongoose.connect('mongodb://localhost:27017/isetcom_db', {
+mongoose.connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 })
@@ -58,5 +57,5 @@ mongoose.connect('mongodb://localhost:27017/isetcom_db', {
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
-    console.log(`Serveur démarré sur le port ${PORT}`);
+    console.log(`🚀 Serveur démarré sur le port ${PORT}`);
 }); 
