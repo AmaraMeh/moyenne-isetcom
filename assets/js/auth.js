@@ -51,21 +51,21 @@ async function login(event) {
     const errorMessage = document.getElementById('error-message');
 
     try {
-        const response = await fetch('api/auth/login.php', {
+        const response = await fetch('/api/auth/login', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
+                'Content-Type': 'application/json',
             },
-            body: `email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`
+            body: JSON.stringify({ email, password })
         });
 
         const data = await response.json();
         
-        if (data.success) {
+        if (response.ok) {
             localStorage.setItem('token', data.token);
             window.location.href = 'index.html';
         } else {
-            errorMessage.textContent = 'Email ou mot de passe incorrect';
+            errorMessage.textContent = data.message || 'Email ou mot de passe incorrect';
             errorMessage.style.display = 'block';
         }
     } catch (error) {
@@ -85,21 +85,26 @@ async function register(event) {
     const errorMessage = document.getElementById('register-error-message');
 
     try {
-        const response = await fetch('api/auth/register.php', {
+        const response = await fetch('/api/auth/register', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
+                'Content-Type': 'application/json',
             },
-            body: `fullName=${encodeURIComponent(fullName)}&email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}&studentId=${encodeURIComponent(studentId)}`
+            body: JSON.stringify({
+                fullName,
+                email,
+                password,
+                studentId
+            })
         });
 
         const data = await response.json();
         
-        if (data.success) {
+        if (response.ok) {
             localStorage.setItem('token', data.token);
             window.location.href = 'index.html';
         } else {
-            errorMessage.textContent = data.error || 'Erreur d\'inscription';
+            errorMessage.textContent = data.message || 'Erreur d\'inscription';
             errorMessage.style.display = 'block';
         }
     } catch (error) {
