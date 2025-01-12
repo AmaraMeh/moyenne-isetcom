@@ -221,4 +221,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (loginForm) {
         loginForm.addEventListener('submit', login);
     }
-}); 
+});
+
+// Remplacez l'URL de l'API par l'URL de Render
+const API_URL = 'https://moyenne-isetcom.onrender.com'; // Utilisez votre URL Render 
