@@ -5,9 +5,9 @@ const path = require('path');
 require('dotenv').config();
 
 // Import des routes
-const authRoutes = require('./routes/auth');
-const surveysRoutes = require('./routes/surveys');
-const supportRoutes = require('./routes/support');
+const authRoutes = require('../routes/auth');
+const surveysRoutes = require('../routes/surveys');
+const supportRoutes = require('../routes/support');
 
 const app = express();
 
