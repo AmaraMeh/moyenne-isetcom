@@ -95,6 +95,26 @@
             <!-- Autres services -->
         </div>
 
+        <div class="glass-card mb-8" data-aos="fade-up" data-aos-delay="400">
+            <h2 class="text-2xl font-bold mb-4">Liste des Étudiants</h2>
+            <div class="overflow-x-auto">
+                <table class="min-w-full bg-white rounded-lg overflow-hidden">
+                    <thead class="bg-gray-100">
+                        <tr>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nom</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Niveau</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Moyenne</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="studentsTableBody">
+                        <!-- Data will be inserted here by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
         <div class="language-selector-home" data-aos="fade-up" data-aos-delay="900">
             <div class="language-option" data-lang="fr">
                 <i class="fas fa-flag text-blue-500"></i>
@@ -124,30 +144,21 @@
     <script src="assets/js/auth-ui.js"></script>
 
     <script>
-        // Assuming you have a function to check if the user is logged in
-        const isLoggedIn = false; // Replace with actual login check
-
-        if (isLoggedIn) {
-            document.getElementById('authButtons').classList.add('hidden');
-            document.getElementById('userMenu').classList.remove('hidden');
-        } else {
-            document.getElementById('authButtons').classList.remove('hidden');
-            document.getElementById('userMenu').classList.add('hidden');
-        }
-
-        // Allow access to specific pages without login
-        const accessiblePages = ['calculator.html', 'guide.html', 'about.html']; // Add more pages as needed
-        const currentPage = window.location.pathname.split('/').pop();
-
-        if (accessiblePages.includes(currentPage)) {
-            // Logic to show the page without requiring login
-            // You can add any specific UI changes here if needed
-        } else {
-            // Redirect to login if trying to access restricted pages
-            if (!isLoggedIn) {
-                window.location.href = 'login.html';
+        document.addEventListener('DOMContentLoaded', function() {
+            const authButtons = document.getElementById('authButtons');
+            const userMenu = document.getElementById('userMenu');
+            const token = localStorage.getItem('token');
+            
+            if (token) {
+                authButtons.classList.add('hidden');
+                userMenu.classList.remove('hidden');
+            } else {
+                authButtons.classList.remove('hidden');
+                userMenu.classList.add('hidden');
             }
-        }
+        });
     </script>
+
+    <script type="module" src="assets/js/studentList.js"></script>
 </body>
 </html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - ISET'COM</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/admin.css">
+</head>
+<body class="bg-gray-50">
+    <div class="flex">
+        <!-- Sidebar -->
+        <div class="admin-sidebar">
+            <div class="admin-logo">
+                <img src="assets/img/logo.png" alt="ISET'COM">
+            </div>
+            <nav class="admin-nav">
+                <a href="#" class="active"><i class="fas fa-users"></i> Gestion des Profils</a>
+                <a href="#"><i class="fas fa-user-plus"></i> Ajouter un Étudiant</a>
+                <a href="#"><i class="fas fa-cog"></i> Paramètres</a>
+            </nav>
+        </div>
+
+        <!-- Main Content -->
+        <div class="admin-main">
+            <header class="admin-header">
+                <h1>Gestion des Profils Étudiants</h1>
+                <div class="admin-search">
+                    <input type="text" placeholder="Rechercher un étudiant...">
+                    <button><i class="fas fa-search"></i></button>
+                </div>
+            </header>
+
+            <!-- Students Grid -->
+            <div class="students-grid">
+                <!-- Student Card Template -->
+                <div class="student-card">
+                    <img src="assets/img/default-avatar.png" alt="Student">
+                    <div class="student-info">
+                        <h3>Nom de l'étudiant</h3>
+                        <p>ID: 12345</p>
+                    </div>
+                    <div class="student-actions">
+                        <button class="edit-btn"><i class="fas fa-edit"></i> Éditer</button>
+                        <button class="delete-btn"><i class="fas fa-trash"></i> Supprimer</button>
+                    </div>
+                </div>
+                <!-- Repeat for other students -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal d'édition -->
+    <div class="edit-modal" id="editModal">
+        <div class="modal-content">
+            <h2>Éditer le Profil</h2>
+            <form id="editProfileForm">
+                <!-- Informations de base -->
+                <div class="form-group">
+                    <label>Nom complet</label>
+                    <input type="text" name="fullName">
+                </div>
+                
+                <!-- Compétences -->
+                <div class="form-group">
+                    <label>Compétences</label>
+                    <div class="skills-editor">
+                        <div class="skill-item">
+                            <input type="text" placeholder="Nom de la compétence">
+                            <input type="range" min="0" max="100">
+                            <button type="button" class="remove-skill">×</button>
+                        </div>
+                        <button type="button" class="add-skill">+ Ajouter une compétence</button>
+                    </div>
+                </div>
+
+                <!-- Réalisations -->
+                <div class="form-group">
+                    <label>Réalisations</label>
+                    <div class="achievements-editor">
+                        <div class="achievement-item">
+                            <input type="text" placeholder="Titre">
+                            <input type="text" placeholder="Description">
+                            <button type="button" class="remove-achievement">×</button>
+                        </div>
+                        <button type="button" class="add-achievement">+ Ajouter une réalisation</button>
+                    </div>
+                </div>
+
+                <div class="modal-actions">
+                    <button type="submit" class="save-btn">Sauvegarder</button>
+                    <button type="button" class="cancel-btn">Annuler</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="assets/js/admin.js"></script>
+</body>
+</html> 

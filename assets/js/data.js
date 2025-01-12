@@ -24,10 +24,6 @@ const isetComData = {
               { matiere: "Langue étrangère 2 (français et/ou anglais)", module: "UET 1.2", coefficient: 2, credits: 2, evaluations: ["Examen"] }
           ]
       },
-      "Science Technologie LMD": { // If this is different from "Science et Technologie LMD"
-          "Semestre 1": [],
-          "Semestre 2": []
-      },
       "Informatique LMD": {
           "Semestre 1": [],
           "Semestre 2": []
