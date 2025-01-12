@@ -22,10 +22,8 @@ if (process.env.NODE_ENV === 'production') {
 
 // Configuration CORS plus permissive
 app.use(cors({
-    origin: '*',  // Permet toutes les origines en développement
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
-    credentials: false  // Changé à false pour le moment
+    origin: ['http://localhost:5500', 'http://127.0.0.1:5500'], // Ajoutez vos domaines
+    credentials: true
 }));
 
 app.use(express.json());
