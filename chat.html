@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Messagerie - ISET'COM</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/chat.css">
+</head>
+<body class="bg-gray-50">
+    <!-- Barre de navigation (comme dans dashboard.html) -->
+    <nav class="bg-white shadow-lg fixed w-full z-50">
+        <!-- ... (même navigation que dashboard.html) ... -->
+    </nav>
+
+    <div class="container mx-auto px-4 pt-20">
+        <div class="flex h-[calc(100vh-120px)]">
+            <!-- Liste des conversations -->
+            <div class="w-1/4 bg-white rounded-l-lg shadow-lg">
+                <div class="p-4 border-b">
+                    <div class="flex justify-between items-center mb-4">
+                        <h2 class="text-xl font-bold">Messages</h2>
+                        <button class="new-message-btn">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                    </div>
+                    <div class="relative">
+                        <input type="text" placeholder="Rechercher..." class="search-input">
+                        <i class="fas fa-search search-icon"></i>
+                    </div>
+                </div>
+                <div class="conversations-list">
+                    <!-- Les conversations seront ajoutées ici dynamiquement -->
+                </div>
+            </div>
+
+            <!-- Zone de chat -->
+            <div class="w-3/4 bg-white rounded-r-lg shadow-lg flex flex-col">
+                <div class="chat-header p-4 border-b">
+                    <div class="flex items-center">
+                        <img src="assets/img/default-avatar.png" alt="Contact" class="w-10 h-10 rounded-full">
+                        <div class="ml-3">
+                            <h3 class="font-bold" id="currentChatName">Sélectionnez une conversation</h3>
+                            <p class="text-sm text-gray-500" id="currentChatStatus"></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chat-messages flex-grow p-4 overflow-y-auto">
+                    <!-- Les messages seront ajoutés ici dynamiquement -->
+                </div>
+
+                <div class="chat-input-area p-4 border-t">
+                    <form id="messageForm" class="flex items-center">
+                        <button type="button" class="attachment-btn">
+                            <i class="fas fa-paperclip"></i>
+                        </button>
+                        <input type="text" placeholder="Écrivez votre message..." class="message-input">
+                        <button type="submit" class="send-btn">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal pour nouveau message -->
+    <div class="modal hidden" id="newMessageModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Nouveau message</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <input type="text" placeholder="Rechercher un contact..." class="contact-search">
+                <div class="contacts-list">
+                    <!-- Les contacts seront ajoutés ici dynamiquement -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/chat.js"></script>
+</body>
+</html> 

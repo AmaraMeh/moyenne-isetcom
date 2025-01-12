@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Guide - ISET'COM</title>
+    <meta name="description" content="Guide des départements ISET'COM" />
+    <meta name="author" content="Saleh Eddine Touil" />
+    <link rel="icon" type="image/png" href="assets/img/icon.png" />
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="flex flex-col min-h-screen" data-aos-easing="ease-out-cubic">
+    <div class="container mx-auto px-4 max-w-5xl flex-grow">
+        <header class="mb-12 mt-12 relative" data-aos="fade-down" data-aos-duration="1000">
+            <div class="header-container">
+                <a href="index.html" class="back-button" data-translate="back_home">
+                    <i class="fas fa-arrow-left"></i>
+                    Retour à l'accueil
+                </a>
+                <img src="assets/img/LOGO.png" alt="ISET'COM" class="max-w-[200px]">
+            </div>
+        </header>
+
+        <!-- Guide Section -->
+        <div class="guide-container glass-card p-8 mb-8">
+            <h2 class="text-2xl font-bold mb-6 flex items-center" data-aos="fade-up" data-aos-duration="1000">
+                <i class="fas fa-book-open mr-3"></i> 
+                <span data-translate="guide_modules">Guide des modules</span>
+            </h2>
+            <div class="speciality-cards grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-6" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+                <!-- ST Module -->
+                <div class="directions-btn flex justify-between space-around spec-card p-6 rounded-lg shadow-lg bg-white transition-transform hover:scale-105">
+                    <h3 class="text-xl font-bold mb-4" data-translate="module_st">ST</h3>
+                    <a href="files/st.pdf" class="download-button text-xl" download>
+                        <i class="fas fa-download ml-2"></i>
+                    </a>
+                </div>
+
+                <!-- Biologie Module -->
+                <div class="directions-btn flex justify-between space-around spec-card p-6 rounded-lg shadow-lg bg-white transition-transform hover:scale-105">
+                    <h3 class="text-xl font-bold mb-4">Biologie</h3>
+                    <a href="files/bio.pdf" class="download-button text-xl" download>
+                        <i class="fas fa-download ml-2"></i>
+                    </a>
+                </div>
+
+                <!-- Informatique Module -->
+                <div class="directions-btn flex justify-between space-around spec-card p-6 rounded-lg shadow-lg bg-white transition-transform hover:scale-105">
+                    <h3 class="text-xl font-bold mb-4">Informatique</h3>
+                    <a href="files/info.pdf" class="download-button text-xl" download>
+                        <i class="fas fa-download ml-2"></i>
+                    </a>
+                </div>
+
+                <!-- Architecture Module -->
+                <div class="directions-btn flex justify-between space-around spec-card p-6 rounded-lg shadow-lg bg-white transition-transform hover:scale-105">
+                    <h3 class="text-xl font-bold mb-4">Architecture</h3>
+                    <a href="files/arch.pdf" class="download-button text-xl" download>
+                        <i class="fas fa-download ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="text-center text-gray-600 text-sm mt-auto py-4">
+        <div>© <script>document.write(new Date().getFullYear());</script> 
+            <a href="mailto:mehdi.amara@icloud.com" class="text-blue-500 hover:text-blue-700">Amara Mehdi</a>. 
+            Tous droits réservés.
+        </div>
+    </footer>
+
+    <script src="assets/js/translations.js"></script>
+    <script src="assets/js/translator.js"></script>
+    
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+    </script>
+</body>
+</html>

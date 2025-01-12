@@ -1,0 +1,183 @@
+/* Cartes statistiques */
+.stat-card {
+    @apply bg-white rounded-lg p-6 shadow-sm;
+    transition: transform 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-2px);
+}
+
+.stat-icon {
+    @apply w-12 h-12 rounded-full flex items-center justify-center mb-4;
+    font-size: 1.5rem;
+}
+
+.stat-icon {
+    background: #EBF5FF;
+    color: #3B82F6;
+}
+
+.stat-icon.success {
+    background: #DCFCE7;
+    color: #16A34A;
+}
+
+.stat-icon.warning {
+    background: #FEF3C7;
+    color: #D97706;
+}
+
+/* Onglets */
+.tabs-container {
+    @apply flex flex-wrap gap-4 border-b border-gray-200;
+}
+
+.tab-btn {
+    @apply px-6 py-3 font-medium text-gray-600 flex items-center gap-2;
+    transition: all 0.3s ease;
+}
+
+.tab-btn:hover {
+    @apply text-blue-600;
+}
+
+.tab-btn.active {
+    @apply text-blue-600 border-b-2 border-blue-600;
+}
+
+/* Contenu des onglets */
+.tab-content {
+    @apply hidden;
+}
+
+.tab-content.active {
+    @apply block;
+}
+
+/* Liste des cours */
+.courses-list {
+    @apply space-y-4;
+}
+
+.course-card {
+    @apply bg-white p-6 rounded-lg shadow-sm;
+    transition: transform 0.3s ease;
+}
+
+.course-card:hover {
+    transform: translateY(-2px);
+}
+
+.course-header {
+    @apply flex justify-between items-center mb-4;
+}
+
+.course-title {
+    @apply text-lg font-semibold text-gray-800;
+}
+
+.course-status {
+    @apply px-3 py-1 rounded-full text-sm font-medium;
+}
+
+.status-pending {
+    @apply bg-yellow-100 text-yellow-800;
+}
+
+.status-completed {
+    @apply bg-green-100 text-green-800;
+}
+
+/* Formulaire d'évaluation */
+.evaluation-form {
+    @apply bg-white p-6 rounded-lg shadow-sm;
+}
+
+.form-group {
+    @apply mb-6;
+}
+
+.form-label {
+    @apply block text-sm font-medium text-gray-700 mb-2;
+}
+
+.rating-group {
+    @apply flex gap-4;
+}
+
+.rating-btn {
+    @apply w-10 h-10 rounded-full flex items-center justify-center border-2;
+    transition: all 0.3s ease;
+}
+
+.rating-btn:hover {
+    @apply border-blue-500 text-blue-500;
+}
+
+.rating-btn.selected {
+    @apply bg-blue-500 text-white border-blue-500;
+}
+
+.comment-input {
+    @apply w-full px-4 py-2 border border-gray-300 rounded-lg;
+    min-height: 100px;
+}
+
+/* Modal */
+.modal {
+    @apply fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50;
+}
+
+.modal-content {
+    @apply bg-white rounded-lg shadow-xl w-full max-w-md mx-4;
+}
+
+.modal-header {
+    @apply flex items-center justify-between p-6 border-b border-gray-200;
+}
+
+.modal-body {
+    @apply p-6;
+}
+
+.close-modal {
+    @apply text-gray-400 hover:text-gray-600 text-2xl font-bold;
+}
+
+/* Boutons */
+.primary-btn {
+    @apply bg-blue-500 text-white px-6 py-2 rounded-lg flex items-center gap-2;
+    transition: background-color 0.3s ease;
+}
+
+.primary-btn:hover {
+    @apply bg-blue-600;
+}
+
+/* Animations */
+@keyframes slideIn {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.course-card, .evaluation-form {
+    animation: slideIn 0.3s ease;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .tabs-container {
+        @apply flex-col;
+    }
+    
+    .tab-btn {
+        @apply w-full justify-center;
+    }
+} 

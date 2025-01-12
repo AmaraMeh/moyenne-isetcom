@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sondages & Évaluations - ISET'COM</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/surveys.css">
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg fixed w-full z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="dashboard.html" class="flex items-center">
+                        <img src="assets/img/logo.png" alt="ISET'COM" class="h-8 w-auto mr-2">
+                        <span class="text-xl font-bold text-gray-800">ISET'COM</span>
+                    </a>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-4">
+                    <a href="dashboard.html" class="nav-link">
+                        <i class="fas fa-home"></i> Accueil
+                    </a>
+                    <a href="schedule.html" class="nav-link">
+                        <i class="fas fa-calendar"></i> Emploi du temps
+                    </a>
+                    <a href="absences.html" class="nav-link">
+                        <i class="fas fa-user-clock"></i> Absences
+                    </a>
+                    <a href="surveys.html" class="nav-link active">
+                        <i class="fas fa-poll"></i> Sondages
+                    </a>
+                    <a href="support.html" class="nav-link">
+                        <i class="fas fa-headset"></i> Support
+                    </a>
+                </div>
+
+                <div class="flex items-center">
+                    <div class="relative">
+                        <button class="notification-btn">
+                            <i class="fas fa-bell"></i>
+                            <span class="notification-badge">3</span>
+                        </button>
+                    </div>
+                    <div class="relative ml-4">
+                        <button class="profile-btn">
+                            <img src="assets/img/profile.jpg" alt="Profile" class="h-8 w-8 rounded-full">
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contenu principal -->
+    <div class="container mx-auto px-4 pt-20">
+        <!-- En-tête avec statistiques -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-chart-bar"></i>
+                </div>
+                <div class="stat-content">
+                    <h3>Sondages actifs</h3>
+                    <p class="stat-value" id="activeSurveys">0</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon success">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <div class="stat-content">
+                    <h3>Évaluations complétées</h3>
+                    <p class="stat-value" id="completedSurveys">0</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon warning">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <div class="stat-content">
+                    <h3>En attente</h3>
+                    <p class="stat-value" id="pendingSurveys">0</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Onglets -->
+        <div class="tabs-container mb-8">
+            <button class="tab-btn active" data-tab="courses">
+                <i class="fas fa-graduation-cap"></i> Évaluation des cours
+            </button>
+            <button class="tab-btn" data-tab="surveys">
+                <i class="fas fa-poll"></i> Sondages
+            </button>
+            <button class="tab-btn" data-tab="feedback">
+                <i class="fas fa-comment-dots"></i> Feedback
+            </button>
+        </div>
+
+        <!-- Contenu des onglets -->
+        <div class="tab-content active" id="courses-tab">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Liste des cours à évaluer -->
+                <div class="courses-list">
+                    <!-- Les cours seront ajoutés dynamiquement -->
+                </div>
+                
+                <!-- Formulaire d'évaluation -->
+                <div class="evaluation-form card hidden">
+                    <!-- Le formulaire sera affiché dynamiquement -->
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-content" id="surveys-tab">
+            <div class="surveys-grid">
+                <!-- Les sondages seront ajoutés dynamiquement -->
+            </div>
+        </div>
+
+        <div class="tab-content" id="feedback-tab">
+            <div class="feedback-container">
+                <!-- Le formulaire de feedback sera ajouté ici -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Notifications dropdown (caché par défaut) -->
+    <div class="notifications-dropdown hidden">
+        <div class="notifications-header">
+            <h3>Notifications</h3>
+            <button class="mark-all-read">Tout marquer comme lu</button>
+        </div>
+        <div class="notifications-list">
+            <!-- Les notifications seront ajoutées dynamiquement -->
+        </div>
+        <div class="notifications-footer">
+            <a href="notifications.html">Voir toutes les notifications</a>
+        </div>
+    </div>
+
+    <!-- Profile dropdown (caché par défaut) -->
+    <div class="profile-dropdown hidden">
+        <div class="profile-info">
+            <img src="assets/img/profile.jpg" alt="Profile" class="h-12 w-12 rounded-full">
+            <div>
+                <h4 class="profile-name">John Doe</h4>
+                <p class="profile-email">john.doe@isetcom.tn</p>
+            </div>
+        </div>
+        <div class="profile-menu">
+            <a href="profile.html" class="profile-link">
+                <i class="fas fa-user"></i> Mon profil
+            </a>
+            <a href="settings.html" class="profile-link">
+                <i class="fas fa-cog"></i> Paramètres
+            </a>
+            <button onclick="logout()" class="profile-link text-red-600">
+                <i class="fas fa-sign-out-alt"></i> Déconnexion
+            </button>
+        </div>
+    </div>
+
+    <!-- Modal de confirmation -->
+    <div class="modal hidden" id="confirmationModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Confirmation</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Votre évaluation a été enregistrée avec succès.</p>
+                <div class="flex justify-center mt-4">
+                    <button class="primary-btn" onclick="closeModal()">
+                        <i class="fas fa-check"></i> OK
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/surveys.js"></script>
+</body>
+</html> 

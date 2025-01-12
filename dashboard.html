@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tableau de Bord - ISET'COM</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/dashboard.css">
+</head>
+<body class="bg-gray-50">
+    <!-- Barre de navigation -->
+    <nav class="bg-white shadow-lg fixed w-full z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <a href="index.html" class="flex items-center">
+                    <img src="assets/img/LOGO.png" alt="ISET'COM" class="h-10">
+                </a>
+                <div class="flex items-center space-x-4">
+                    <div class="relative" id="notificationButton">
+                        <button class="p-2 rounded-full hover:bg-gray-100">
+                            <i class="fas fa-bell text-gray-600"></i>
+                            <span class="notification-badge">3</span>
+                        </button>
+                        <!-- Dropdown notifications -->
+                        <div class="notification-dropdown hidden">
+                            <div class="notification-header">
+                                <h3>Notifications</h3>
+                                <button class="mark-all-read">Tout marquer comme lu</button>
+                            </div>
+                            <div class="notification-list">
+                                <!-- Les notifications seront ajoutées ici dynamiquement -->
+                            </div>
+                        </div>
+                    </div>
+                    <a href="profile.html" class="flex items-center space-x-2">
+                        <img src="assets/img/default-avatar.png" alt="Profile" class="w-8 h-8 rounded-full">
+                        <span class="text-gray-700" id="userName">Nom d'utilisateur</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contenu principal -->
+    <div class="container mx-auto px-4 pt-20">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Résumé des moyennes -->
+            <div class="dashboard-card col-span-2">
+                <h2 class="card-title">
+                    <i class="fas fa-chart-line mr-2"></i>
+                    Moyennes et Résultats
+                </h2>
+                <div class="grid grid-cols-3 gap-4 mb-6">
+                    <div class="stat-card">
+                        <h3>Moyenne Générale</h3>
+                        <p class="text-2xl font-bold text-blue-600">14.75</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Crédits Validés</h3>
+                        <p class="text-2xl font-bold text-green-600">90/120</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Classement</h3>
+                        <p class="text-2xl font-bold text-purple-600">5/120</p>
+                    </div>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="grades-table">
+                        <thead>
+                            <tr>
+                                <th>Module</th>
+                                <th>Coefficient</th>
+                                <th>Note CC</th>
+                                <th>Note Exam</th>
+                                <th>Moyenne</th>
+                                <th>Statut</th>
+                            </tr>
+                        </thead>
+                        <tbody id="gradesTableBody">
+                            <!-- Les notes seront ajoutées ici dynamiquement -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Événements à venir -->
+            <div class="dashboard-card">
+                <h2 class="card-title">
+                    <i class="fas fa-calendar-alt mr-2"></i>
+                    Événements à venir
+                </h2>
+                <div class="upcoming-events" id="upcomingEvents">
+                    <!-- Les événements seront ajoutés ici dynamiquement -->
+                </div>
+            </div>
+
+            <!-- Calendrier -->
+            <div class="dashboard-card col-span-3">
+                <h2 class="card-title">
+                    <i class="fas fa-calendar mr-2"></i>
+                    Calendrier des examens et cours
+                </h2>
+                <div id="calendar" class="mt-4"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
+    <script src="assets/js/dashboard.js"></script>
+</body>
+</html> 

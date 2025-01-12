@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Actualités - Université de Bejaia</title>
+    <meta name="description" content="Actualités de l'Université de Bejaia" />
+    <meta name="author" content="Saleh Eddine Touil" />
+    <link rel="icon" type="image/png" href="assets/img/icon.png" />
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="flex flex-col min-h-screen" data-aos-easing="ease-out-cubic">
+    <div class="container mx-auto px-4 max-w-5xl flex-grow">
+        <header class="mb-12 mt-12 relative" data-aos="fade-down">
+            <div class="header-container">
+                <a href="index.html" class="back-button" data-translate="back_home">
+                    <i class="fas fa-arrow-left"></i>
+                    Retour à l'accueil
+                </a>
+                <img src="assets/img/LOGO.png" alt="Université de Bejaia" class="max-w-[200px]">
+            </div>
+        </header>
+
+        <div class="glass-card p-8 mb-8" data-aos="fade-up">
+            <h2 class="text-2xl font-bold mb-6 flex items-center">
+                <i class="fas fa-newspaper mr-3"></i> 
+                <span data-translate="news_title">Actualités du Campus</span>
+            </h2>
+
+            <!-- Filtres -->
+            <div class="mb-8 flex flex-wrap gap-4">
+                <button class="custom-button" data-translate="filter_all">Tous</button>
+                <button class="custom-button bg-opacity-50" data-translate="filter_events">Événements</button>
+                <button class="custom-button bg-opacity-50" data-translate="filter_academic">Académique</button>
+                <button class="custom-button bg-opacity-50" data-translate="filter_student_life">Vie étudiante</button>
+            </div>
+
+            <!-- Articles -->
+            <div class="grid grid-cols-1 gap-8">
+                <!-- Article 1 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden" data-aos="fade-up">
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-sm text-gray-500">15 Mars 2024</span>
+                            <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm" data-translate="event">Événement</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Journée Portes Ouvertes 2024</h3>
+                        <p class="text-gray-600 mb-4">Découvrez notre université lors de notre journée portes ouvertes annuelle. Au programme : rencontres avec les enseignants, visites des laboratoires...</p>
+                        <a href="#" class="text-blue-500 hover:text-blue-700">Lire la suite →</a>
+                    </div>
+                </div>
+
+                <!-- Article 2 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden" data-aos="fade-up">
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-sm text-gray-500">10 Mars 2024</span>
+                            <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm">Académique</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Nouveaux Programmes d'Études</h3>
+                        <p class="text-gray-600 mb-4">L'université lance de nouveaux programmes d'études pour l'année académique 2024-2025. Découvrez les nouvelles spécialités disponibles...</p>
+                        <a href="#" class="text-blue-500 hover:text-blue-700">Lire la suite →</a>
+                    </div>
+                </div>
+
+                <!-- Article 3 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden" data-aos="fade-up">
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-sm text-gray-500">5 Mars 2024</span>
+                            <span class="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm">Vie étudiante</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Club Robotique : Victoire au Concours National</h3>
+                        <p class="text-gray-600 mb-4">Notre équipe de robotique remporte le premier prix au concours national d'innovation technologique...</p>
+                        <a href="#" class="text-blue-500 hover:text-blue-700">Lire la suite →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="text-center text-gray-600 text-sm mt-auto py-4">
+        <div>© <script>document.write(new Date().getFullYear());</script> <a href="mailto:contact@univ-bejaia.dz" class="text-blue-500 hover:text-blue-700">Université de Bejaia</a>. Tous droits réservés.</div>
+    </footer>
+
+    <script src="assets/js/translations.js"></script>
+    <script src="assets/js/translator.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+    </script>
+</body>
+</html> 

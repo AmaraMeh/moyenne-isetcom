@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Espace Projets - Université de Bejaia</title>
+    <meta name="description" content="Partagez vos projets innovants" />
+    <meta name="author" content="Saleh Eddine Touil" />
+    <link rel="icon" type="image/png" href="assets/img/icon.png" />
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="flex flex-col min-h-screen" data-aos-easing="ease-out-cubic">
+    <div class="container mx-auto px-4 max-w-5xl flex-grow">
+        <header class="mb-12 mt-12 relative" data-aos="fade-down">
+            <div class="header-container">
+                <a href="index.html" class="back-button">
+                    <i class="fas fa-arrow-left"></i>
+                    Retour à l'accueil
+                </a>
+                <img src="assets/img/LOGO.png" alt="Université de Bejaia" class="max-w-[200px]">
+            </div>
+        </header>
+
+        <div class="glass-card p-8 mb-8" data-aos="fade-up">
+            <h2 class="text-2xl font-bold mb-6 flex items-center">
+                <i class="fas fa-lightbulb mr-3"></i> 
+                <span data-translate="projects_title">Projets Innovants</span>
+            </h2>
+
+            <!-- Section Soumettre un Projet -->
+            <div class="mb-8 p-6 bg-white rounded-lg shadow-lg">
+                <h3 class="text-xl font-bold mb-4" data-translate="submit_project">Soumettre un Projet</h3>
+                <form class="space-y-4">
+                    <div>
+                        <label class="block mb-2">Titre du Projet</label>
+                        <input type="text" class="custom-input w-full" placeholder="Entrez le titre de votre projet">
+                    </div>
+                    <div>
+                        <label class="block mb-2">Description</label>
+                        <textarea class="custom-input w-full h-32" placeholder="Décrivez votre projet"></textarea>
+                    </div>
+                    <button type="submit" class="custom-button">Soumettre</button>
+                </form>
+            </div>
+
+            <!-- Projets Récents -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="p-6 bg-white rounded-lg shadow-lg">
+                    <h3 class="font-bold mb-2">Système de Gestion de Bibliothèque</h3>
+                    <p class="text-gray-600 mb-4">Un système numérique pour gérer les emprunts et retours de livres.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm text-gray-500">Par: Ahmed B.</span>
+                        <button class="text-green hover:text-green-dark">
+                            <i class="fas fa-heart"></i> 24
+                        </button>
+                    </div>
+                </div>
+
+                <div class="p-6 bg-white rounded-lg shadow-lg">
+                    <h3 class="font-bold mb-2">Application Mobile Campus</h3>
+                    <p class="text-gray-600 mb-4">Une application pour accéder aux services universitaires.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm text-gray-500">Par: Sarah M.</span>
+                        <button class="text-green hover:text-green-dark">
+                            <i class="fas fa-heart"></i> 18
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="text-center text-gray-600 text-sm mt-auto py-4">
+        <div>© <script>document.write(new Date().getFullYear());</script> <a href="mailto:contact@univ-bejaia.dz" class="text-blue-500 hover:text-blue-700">Université de Bejaia</a>. Tous droits réservés.</div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+    </script>
+</body>
+</html> 

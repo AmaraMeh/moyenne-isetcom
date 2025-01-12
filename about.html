@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>À Propos - Université de Bejaia</title>
+    <meta name="description" content="À propos de l'Université de Bejaia" />
+    <meta name="author" content="Saleh Eddine Touil" />
+    <link rel="icon" type="image/png" href="assets/img/icon.png" />
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="flex flex-col min-h-screen" data-aos-easing="ease-out-cubic">
+    <div class="container mx-auto px-4 max-w-5xl flex-grow">
+        <header class="mb-12 mt-12 relative" data-aos="fade-down">
+            <div class="header-container">
+                <a href="index.html" class="back-button">
+                    <i class="fas fa-arrow-left"></i>
+                    Retour à l'accueil
+                </a>
+                <img src="assets/img/LOGO.png" alt="Université de Bejaia" class="max-w-[200px]">
+            </div>
+        </header>
+
+        <div class="glass-card p-8 mb-8" data-aos="fade-up">
+            <h2 class="text-2xl font-bold mb-6 flex items-center">
+                <i class="fas fa-university mr-3"></i> Notre Université
+            </h2>
+
+            <!-- Histoire -->
+            <div class="mb-12 bg-white rounded-lg shadow-lg p-6" data-aos="fade-up">
+                <h3 class="text-xl font-bold mb-4">Notre Histoire</h3>
+                <p class="text-gray-600 mb-4">
+                    L'Université de Bejaia, fondée en 1983, est une institution d'enseignement supérieur publique située à Bejaia, Algérie. 
+                    Avec plus de 40 ans d'excellence académique, notre université s'est imposée comme un centre majeur d'enseignement et de recherche.
+                </p>
+            </div>
+
+            <!-- Mission et Vision -->
+            <div class="mb-12 bg-white rounded-lg shadow-lg p-6" data-aos="fade-up">
+                <h3 class="text-xl font-bold mb-4">Mission et Vision</h3>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="font-bold mb-2">Notre Mission</h4>
+                        <p class="text-gray-600">
+                            Former les leaders de demain en offrant une éducation de qualité et en encourageant l'innovation et la recherche.
+                        </p>
+                    </div>
+                    <div>
+                        <h4 class="font-bold mb-2">Notre Vision</h4>
+                        <p class="text-gray-600">
+                            Devenir une référence internationale en matière d'enseignement supérieur et de recherche scientifique.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chiffres Clés -->
+            <div class="mb-12 grid grid-cols-1 md:grid-cols-3 gap-6" data-aos="fade-up">
+                <div class="bg-white rounded-lg shadow-lg p-6 text-center">
+                    <i class="fas fa-users text-4xl text-blue-500 mb-4"></i>
+                    <h4 class="font-bold text-xl mb-2">45,000+</h4>
+                    <p class="text-gray-600">Étudiants</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-lg p-6 text-center">
+                    <i class="fas fa-chalkboard-teacher text-4xl text-green-500 mb-4"></i>
+                    <h4 class="font-bold text-xl mb-2">1,500+</h4>
+                    <p class="text-gray-600">Enseignants</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-lg p-6 text-center">
+                    <i class="fas fa-flask text-4xl text-purple-500 mb-4"></i>
+                    <h4 class="font-bold text-xl mb-2">50+</h4>
+                    <p class="text-gray-600">Laboratoires</p>
+                </div>
+            </div>
+
+            <!-- Contact -->
+            <div class="bg-white rounded-lg shadow-lg p-6" data-aos="fade-up">
+                <h3 class="text-xl font-bold mb-4">Nous Contacter</h3>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <p class="mb-2"><i class="fas fa-map-marker-alt mr-2"></i> Route de Targa Ouzemour, 06000 Bejaia</p>
+                        <p class="mb-2"><i class="fas fa-phone mr-2"></i> +213 34 81 68 26</p>
+                        <p><i class="fas fa-envelope mr-2"></i> contact@univ-bejaia.dz</p>
+                    </div>
+                    <div class="social-links">
+                        <h4 class="font-bold mb-2">Suivez-nous</h4>
+                        <div class="flex space-x-4">
+                            <a href="#" class="text-2xl hover:text-blue-500"><i class="fab fa-facebook"></i></a>
+                            <a href="#" class="text-2xl hover:text-blue-400"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="text-2xl hover:text-red-500"><i class="fab fa-youtube"></i></a>
+                            <a href="#" class="text-2xl hover:text-blue-600"><i class="fab fa-linkedin"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="text-center text-gray-600 text-sm mt-auto py-4">
+        <div>© <script>document.write(new Date().getFullYear());</script> <a href="mailto:contact@univ-bejaia.dz" class="text-blue-500 hover:text-blue-700">Université de Bejaia</a>. Tous droits réservés.</div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+    </script>
+</body>
+</html> 

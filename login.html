@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Connexion - ISET'COM</title>
+    <meta name="description" content="Connexion ISET'COM" />
+    <meta name="author" content="Saleh Eddine Touil" />
+    <link rel="icon" type="image/png" href="assets/img/icon.png" />
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="flex flex-col min-h-screen bg-gradient-to-br from-blue-50 to-blue-100">
+    <div class="container mx-auto px-4 max-w-md flex-grow flex items-center justify-center">
+        <div class="glass-card p-8 w-full" data-aos="fade-up">
+            <div class="text-center mb-8">
+                <a href="index.html">
+                    <img src="assets/img/LOGO.png" alt="ISET'COM" class="mx-auto max-w-[200px]">
+                </a>
+            </div>
+
+            <!-- Tabs -->
+            <div class="flex justify-center mb-8">
+                <button class="tab-btn active px-6 py-2 rounded-l-lg" data-tab="login" data-translate="login">
+                    Connexion
+                </button>
+                <button class="tab-btn px-6 py-2 rounded-r-lg" data-tab="signup" data-translate="signup">
+                    Inscription
+                </button>
+            </div>
+
+            <!-- Login Form -->
+            <form id="loginForm" class="tab-content active">
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" data-translate="email">
+                        Email
+                    </label>
+                    <input type="email" name="email" class="custom-input w-full" required>
+                </div>
+                <div class="mb-6">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" data-translate="password">
+                        Mot de passe
+                    </label>
+                    <input type="password" name="password" class="custom-input w-full" required>
+                </div>
+                <button type="submit" class="custom-button w-full" data-translate="login">
+                    Se connecter
+                </button>
+            </form>
+
+            <!-- Signup Form -->
+            <form id="registerForm" class="space-y-4">
+                <div>
+                    <label for="fullName">Nom complet</label>
+                    <input type="text" id="fullName" required>
+                </div>
+                <div>
+                    <label for="email">Email</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div>
+                    <label for="studentId">ID Étudiant</label>
+                    <input type="text" id="studentId" required>
+                </div>
+                <div>
+                    <label for="password">Mot de passe</label>
+                    <input type="password" id="password" required>
+                </div>
+                <div id="error-message" class="error-message" style="display: none;"></div>
+                <button type="submit">S'inscrire</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="assets/js/translations.js"></script>
+    <script src="assets/js/translator.js"></script>
+    <script src="assets/js/auth.js"></script>
+</body>
+</html> 
