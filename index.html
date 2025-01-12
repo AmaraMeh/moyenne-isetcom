@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calcul de Moyenne ISET'Com</title>
+    <meta name="description" content="Calcul de Moyenne ISET'Com">
+    <meta name="author" content="Saleh Eddine Touil">
+    <meta name="keywords" content="ISET'Com, Moyenne, Calcul, ISETCOM">
+    <meta name="robots" content="index, follow">
+    <link rel="icon" type="image/png" href="assets/img/icon.png">
+    <meta property="og:url" content="https://saleheddinetouil.github.io/moyenne-isetcom/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Calcul de Moyenne ISET'Com">
+    <meta property="og:description" content="Calcul de Moyenne ISET'Com">
+    <meta property="og:image" content="https://masterpiecer-images.s3.yandex.net/b08e69b27e0b11eeb532aaafe6635749:upscaled">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
+    <link rel="stylesheet" href="assets/css/floating-menu.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EQKL1PB4JE"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-EQKL1PB4JE');
+    </script>
+    <link rel="stylesheet" href="assets/css/absences.css">
+    <link rel="stylesheet" href="assets/css/chat.css">
+    <link rel="stylesheet" href="assets/css/dashboard.css">
+    <link rel="stylesheet" href="assets/css/schedule.css">
+    <script src="./assets/js/auth.js"></script>
+    <script src="assets/js/absences.js"></script>
+    <script src="assets/js/chat.js"></script>
+    <script src="assets/js/dashboard.js"></script>
+    <script src="assets/js/schedule.js"></script>
+</head>
+<body class="flex flex-col min-h-screen" data-aos-easing="ease-out-cubic">
+    <div class="container mx-auto px-4 max-w-5xl flex-grow">
+        <header class="mb-12 mt-12 relative" data-aos="fade-down" data-aos-duration="1000">
+            <div class="flex items-center justify-between mb-6">
+                <a href="#" class="transform hover:scale-105 transition-transform">
+                    <img src="assets/img/LOGO.png" alt="ISET'Com" class="max-w-[200px]">
+                </a>
+                
+                <!-- Boutons d'authentification -->
+                <div class="auth-buttons flex gap-4" id="authButtons">
+                    <a href="login.html" class="login-btn" data-translate="login">
+                        <i class="fas fa-sign-in-alt mr-2"></i>
+                        Connexion
+                    </a>
+                    <a href="login.html?tab=signup" class="signup-btn" data-translate="signup">
+                        <i class="fas fa-user-plus mr-2"></i>
+                        S'inscrire
+                    </a>
+                </div>
+
+                <!-- Menu utilisateur (visible après connexion) -->
+                <div class="user-menu hidden" id="userMenu">
+                    <div class="flex items-center gap-4">
+                        <a href="profile.html" class="profile-link">
+                            <img src="assets/img/default-avatar.png" alt="Profile" class="w-10 h-10 rounded-full border-2 border-white">
+                        </a>
+                        <div class="flex flex-col">
+                            <span class="font-medium" id="userName">Nom d'utilisateur</span>
+                            <button id="logoutBtn" class="text-sm text-red-500 hover:text-red-700" data-translate="logout">
+                                <i class="fas fa-sign-out-alt mr-1"></i>
+                                Déconnexion
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="welcome-section text-center mb-12" data-aos="fade-up">
+            <h1 class="text-4xl font-bold mb-4" data-translate="welcome_title">Portail Étudiant Université de Bejaia</h1>
+            <p class="text-xl text-gray-600" data-translate="welcome_subtitle">Votre espace numérique universitaire</p>
+        </div>
+
+        <div class="services-grid" data-aos="fade-up" data-aos-delay="200">
+            <a href="calculator.html" class="service-card" data-aos="zoom-in" data-aos-delay="300">
+                <div class="service-icon">
+                    <i class="fas fa-calculator text-5xl mb-4"></i>
+                </div>
+                <h2 class="text-2xl font-bold mb-2" data-translate="calculator">Calcul de Moyenne</h2>
+                <p class="text-gray-600" data-translate="calculator_desc">Calculez votre moyenne facilement</p>
+            </a>
+
+            <a href="guide.html" class="service-card" data-aos="zoom-in" data-aos-delay="400">
+                <div class="service-icon">
+                    <i class="fas fa-book-open text-5xl mb-4"></i>
+                </div>
+                <h2 class="text-2xl font-bold mb-2" data-translate="guide">Guide des Départements</h2>
+                <p class="text-gray-600" data-translate="guide_desc">Découvrez les départements de l'université</p>
+            </a>
+
+            <a href="bib.html" class="service-card" data-aos="zoom-in" data-aos-delay="500">
+                <div class="service-icon">
+                    <i class="fas fa-book-reader text-5xl mb-4"></i>
+                </div>
+                <h2 class="text-2xl font-bold mb-2" data-translate="library">Bibliothèque</h2>
+                <p class="text-gray-600" data-translate="library_desc">Accédez aux ressources académiques</p>
+            </a>
+
+            <a href="projects.html" class="service-card" data-aos="zoom-in" data-aos-delay="600">
+                <div class="service-icon">
+                    <i class="fas fa-lightbulb text-5xl mb-4"></i>
+                </div>
+                <h2 class="text-2xl font-bold mb-2" data-translate="projects">Espace Projets</h2>
+                <p class="text-gray-600" data-translate="projects_desc">Partagez vos idées et projets innovants</p>
+            </a>
+
+            <a href="news.html" class="service-card" data-aos="zoom-in" data-aos-delay="700">
+                <div class="service-icon">
+                    <i class="fas fa-newspaper text-5xl mb-4"></i>
+                </div>
+                <h2 class="text-2xl font-bold mb-2" data-translate="news">Actualités Campus</h2>
+                <p class="text-gray-600" data-translate="news_desc">Suivez l'actualité de l'université</p>
+            </a>
+
+            <a href="about.html" class="service-card" data-aos="zoom-in" data-aos-delay="800">
+                <div class="service-icon">
+                    <i class="fas fa-users text-5xl mb-4"></i>
+                </div>
+                <h2 class="text-2xl font-bold mb-2" data-translate="about">À Propos</h2>
+                <p class="text-gray-600" data-translate="about_desc">Découvrez notre équipe et notre mission</p>
+            </a>
+        </div>
+
+        <div class="language-selector-home" data-aos="fade-up" data-aos-delay="900">
+            <div class="language-option" data-lang="fr">
+                <i class="fas fa-flag text-blue-500"></i>
+                <span>Français</span>
+            </div>
+            <div class="language-option" data-lang="en">
+                <i class="fas fa-flag-usa text-red-500"></i>
+                <span>English</span>
+            </div>
+            <div class="language-option" data-lang="ar">
+                <i class="fas fa-flag text-green-500"></i>
+                <span>العربية</span>
+            </div>
+        </div>
+    </div>
+
+    <footer class="text-center text-gray-600 text-sm mt-auto py-4">
+        <div>© <script>document.write(new Date().getFullYear());</script> <a href="mailto:mehdi.amara@icloud.com?subject=Calcul%20Moyenne%20-%20Contact" class="text-blue-500 hover:text-blue-700">Amara Mehdi</a>. Tous droits réservés. </div>
+    </footer>
+
+    <script src="assets/js/translations.js"></script>
+    <script src="assets/js/translator.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true, offset: 100, delay: 100 });
+    </script>
+    <script src="assets/js/auth-ui.js"></script>
+</body>
+</html>

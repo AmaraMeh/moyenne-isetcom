@@ -1,0 +1,283 @@
+/* Conteneur principal */
+.calendar-container {
+    background: white;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    min-height: 700px;
+}
+
+/* Boutons de vue */
+.view-toggles {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.view-btn {
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+    background: #f1f5f9;
+    color: #64748b;
+}
+
+.view-btn:hover {
+    background: #e2e8f0;
+}
+
+.view-btn.active {
+    background: #3b82f6;
+    color: white;
+}
+
+/* Filtres */
+.filter-select {
+    padding: 0.5rem 2.5rem 0.5rem 1rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.5rem;
+    background: white;
+    color: #64748b;
+    font-size: 0.875rem;
+    appearance: none;
+    background-image: url("data:image/svg+xml,...");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 1rem;
+}
+
+/* Boutons d'action */
+.sync-btn, .export-btn {
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.sync-btn {
+    background: #ef4444;
+    color: white;
+}
+
+.sync-btn:hover {
+    background: #dc2626;
+}
+
+.export-btn {
+    background: #10b981;
+    color: white;
+}
+
+.export-btn:hover {
+    background: #059669;
+}
+
+/* Légende */
+.legend-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 1rem;
+    background: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    color: #64748b;
+}
+
+.legend-color {
+    width: 1rem;
+    height: 1rem;
+    border-radius: 0.25rem;
+}
+
+/* Styles FullCalendar personnalisés */
+.fc {
+    font-family: inherit;
+}
+
+.fc-toolbar-title {
+    font-size: 1.25rem !important;
+    font-weight: 600 !important;
+}
+
+.fc-event {
+    border: none !important;
+    padding: 0.25rem 0.5rem !important;
+    font-size: 0.875rem !important;
+    cursor: pointer !important;
+    transition: transform 0.2s ease !important;
+}
+
+.fc-event:hover {
+    transform: scale(1.02);
+}
+
+.fc-event-cours {
+    background-color: #3b82f6 !important;
+}
+
+.fc-event-tp {
+    background-color: #10b981 !important;
+}
+
+.fc-event-td {
+    background-color: #f59e0b !important;
+}
+
+.fc-event-exam {
+    background-color: #ef4444 !important;
+}
+
+.fc-event-event {
+    background-color: #8b5cf6 !important;
+}
+
+/* Modal */
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: white;
+    border-radius: 1rem;
+    width: 90%;
+    max-width: 600px;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.modal-header {
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid #e2e8f0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1e293b;
+}
+
+.close-modal {
+    font-size: 1.5rem;
+    color: #94a3b8;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.close-modal:hover {
+    color: #64748b;
+}
+
+.modal-body {
+    padding: 1.5rem;
+}
+
+.info-group label {
+    font-size: 0.875rem;
+    color: #64748b;
+    margin-bottom: 0.25rem;
+    display: block;
+}
+
+.info-group p {
+    font-size: 1rem;
+    color: #1e293b;
+}
+
+.modal-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.google-btn, .share-btn {
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.google-btn {
+    background: #ef4444;
+    color: white;
+}
+
+.google-btn:hover {
+    background: #dc2626;
+}
+
+.share-btn {
+    background: #3b82f6;
+    color: white;
+}
+
+.share-btn:hover {
+    background: #2563eb;
+}
+
+/* Liste des changements */
+.changes-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.change-item {
+    padding: 1rem;
+    background: #f8fafc;
+    border-radius: 0.5rem;
+    border-left: 4px solid;
+}
+
+.change-item.added {
+    border-color: #10b981;
+}
+
+.change-item.modified {
+    border-color: #f59e0b;
+}
+
+.change-item.cancelled {
+    border-color: #ef4444;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .view-toggles {
+        margin-top: 1rem;
+    }
+
+    .filter-select, .sync-btn, .export-btn {
+        width: 100%;
+        margin-top: 0.5rem;
+    }
+
+    .legend-container {
+        justify-content: center;
+    }
+} 
