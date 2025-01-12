@@ -20,6 +20,9 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+// Modifiez l'URL de l'API pour pointer vers votre serveur
+const API_URL = 'http://localhost:3000'; // ou votre URL de production
+
 // Login function
 async function login(event) {
     event.preventDefault();
@@ -27,12 +30,16 @@ async function login(event) {
     const password = document.getElementById('loginPassword').value;
     const errorMessage = document.getElementById('error-message');
 
+    console.log('Tentative de connexion avec:', { email });
+
     try {
-        const response = await fetch('/api/auth/login', {
+        const response = await fetch(`${API_URL}/api/auth/login`, {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
             },
+            credentials: 'include', // Important pour les cookies
             body: JSON.stringify({ email, password })
         });
 
@@ -45,12 +52,11 @@ async function login(event) {
         } else {
             errorMessage.textContent = data.message || 'Email ou mot de passe incorrect';
             errorMessage.style.display = 'block';
-            // Clear password field for security
-            document.getElementById('loginPassword').value = '';
         }
     } catch (error) {
         console.error('Error:', error);
-        errorMessage.textContent = 'Erreur de connexion au serveur';
+        console.log('Erreur détaillée:', error);
+        errorMessage.textContent = 'Erreur de connexion au serveur. Veuillez vérifier votre connexion internet.';
         errorMessage.style.display = 'block';
     }
 }
@@ -65,11 +71,13 @@ async function register(event) {
     const errorMessage = document.getElementById('register-error-message');
 
     try {
-        const response = await fetch('/api/auth/register', {
+        const response = await fetch(`${API_URL}/api/auth/register`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                'Accept': 'application/json'
             },
+            credentials: 'include',
             body: JSON.stringify({
                 fullName,
                 email,
@@ -89,7 +97,7 @@ async function register(event) {
         }
     } catch (error) {
         console.error('Error:', error);
-        errorMessage.textContent = 'Erreur de connexion';
+        errorMessage.textContent = 'Erreur de connexion au serveur. Veuillez réessayer.';
         errorMessage.style.display = 'block';
     }
 }
