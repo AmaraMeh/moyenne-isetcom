@@ -59,13 +59,15 @@ app.use('/api/auth', authRoutes);
 app.use('/api/surveys', surveysRoutes);
 app.use('/api/support', supportRoutes);
 
-// Connexion MongoDB
-mongoose.connect(process.env.MONGODB_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-})
-.then(() => console.log('✅ Connecté à MongoDB'))
-.catch(err => console.error('❌ Erreur MongoDB:', err));
+// Test de connexion MongoDB
+mongoose.connect(process.env.MONGODB_URI)
+    .then(() => {
+        console.log('✅ Connecté à MongoDB avec succès');
+        console.log('URI utilisé:', process.env.MONGODB_URI);
+    })
+    .catch(err => {
+        console.error('❌ Erreur de connexion MongoDB:', err);
+    });
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
