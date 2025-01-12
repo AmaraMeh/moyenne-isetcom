@@ -266,4 +266,17 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    // Vérifiez si l'utilisateur est connecté
+    const isLoggedIn = localStorage.getItem('token') !== null;
+
+    if (isLoggedIn) {
+        // Afficher le menu utilisateur
+        document.getElementById('authButtons').classList.add('hidden');
+        document.getElementById('userMenu').classList.remove('hidden');
+    } else {
+        // Afficher les boutons d'authentification
+        document.getElementById('authButtons').classList.remove('hidden');
+        document.getElementById('userMenu').classList.add('hidden');
+    }
 });
