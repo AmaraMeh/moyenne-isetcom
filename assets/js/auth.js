@@ -45,14 +45,66 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Login function
 async function login(event) {
-    if (!event) return;
     event.preventDefault();
-    // ... rest of login logic ...
+    const email = document.getElementById('loginEmail').value;
+    const password = document.getElementById('loginPassword').value;
+    const errorMessage = document.getElementById('error-message');
+
+    try {
+        const response = await fetch('api/auth/login.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: `email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`
+        });
+
+        const data = await response.json();
+        
+        if (data.success) {
+            localStorage.setItem('token', data.token);
+            window.location.href = 'index.html';
+        } else {
+            errorMessage.textContent = 'Email ou mot de passe incorrect';
+            errorMessage.style.display = 'block';
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        errorMessage.textContent = 'Erreur de connexion';
+        errorMessage.style.display = 'block';
+    }
 }
 
 // Register function
 async function register(event) {
-    if (!event) return;
     event.preventDefault();
-    // ... rest of register logic ...
+    const fullName = document.getElementById('fullName').value;
+    const email = document.getElementById('registerEmail').value;
+    const password = document.getElementById('registerPassword').value;
+    const studentId = document.getElementById('studentId').value;
+    const errorMessage = document.getElementById('register-error-message');
+
+    try {
+        const response = await fetch('api/auth/register.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: `fullName=${encodeURIComponent(fullName)}&email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}&studentId=${encodeURIComponent(studentId)}`
+        });
+
+        const data = await response.json();
+        
+        if (data.success) {
+            localStorage.setItem('token', data.token);
+            window.location.href = 'index.html';
+        } else {
+            errorMessage.textContent = data.error || 'Erreur d\'inscription';
+            errorMessage.style.display = 'block';
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        errorMessage.textContent = 'Erreur de connexion';
+        errorMessage.style.display = 'block';
+    }
 } 
