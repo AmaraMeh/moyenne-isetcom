@@ -1,15 +1,19 @@
 {
-  "name": "moyenne-isetcom",
+  "name": "isetcom-backend",
   "version": "1.0.0",
+  "main": "server.js",
   "scripts": {
-    "start": "node backend/server.js",
-    "server": "nodemon backend/server.js",
-    "client": "cd frontend && npm start",
-    "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "install-deps": "npm install && cd backend && npm install && cd ../frontend && npm install"
+    "start": "node server.js"
   },
-  "devDependencies": {
-    "concurrently": "^8.2.0",
-    "nodemon": "^2.0.15"
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^6.0.12",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^8.5.1"
+  },
+  "engines": {
+    "node": "18.x"
   }
 }
