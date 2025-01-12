@@ -60,6 +60,7 @@ app.use('/api/surveys', surveysRoutes);
 app.use('/api/support', supportRoutes);
 
 // Test de connexion MongoDB
+mongoose.set('strictQuery', false);
 mongoose.connect(process.env.MONGODB_URI)
     .then(() => {
         console.log('✅ Connecté à MongoDB avec succès');
