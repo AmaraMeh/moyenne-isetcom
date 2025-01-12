@@ -3,53 +3,81 @@ const router = express.Router();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
+const mongoose = require('mongoose');
 
 // Route d'inscription
 router.post('/register', async (req, res) => {
+    console.log('Début de la route /register');
     try {
         console.log('Données reçues:', req.body);
         
-        const { fullName, email, studentId, password } = req.body;
-        
-        // Validation
-        if (!fullName || !email || !studentId || !password) {
-            console.log('Données manquantes:', { fullName, email, studentId, password });
-            return res.status(400).json({ message: 'Tous les champs sont requis' });
+        // Vérification de la connexion MongoDB
+        if (mongoose.connection.readyState !== 1) {
+            console.error('MongoDB non connecté');
+            return res.status(500).json({ message: 'Erreur de base de données' });
         }
 
-        // Vérifier si l'utilisateur existe
-        let user = await User.findOne({ email });
-        if (user) {
+        const { fullName, email, studentId, password } = req.body;
+        
+        // Validation plus détaillée
+        if (!fullName) return res.status(400).json({ message: 'Nom complet requis' });
+        if (!email) return res.status(400).json({ message: 'Email requis' });
+        if (!studentId) return res.status(400).json({ message: 'ID Étudiant requis' });
+        if (!password) return res.status(400).json({ message: 'Mot de passe requis' });
+
+        console.log('Validation des champs OK');
+
+        // Vérification de l'email
+        const existingUser = await User.findOne({ email });
+        if (existingUser) {
             console.log('Email déjà utilisé:', email);
             return res.status(400).json({ message: 'Cet email est déjà utilisé' });
         }
 
-        // Créer l'utilisateur
-        user = new User({
-            fullName,
-            email,
-            studentId,
-            password
-        });
+        console.log('Vérification email OK');
 
         // Hash du mot de passe
         const salt = await bcrypt.genSalt(10);
-        user.password = await bcrypt.hash(password, salt);
+        const hashedPassword = await bcrypt.hash(password, salt);
 
+        console.log('Hash du mot de passe OK');
+
+        // Création de l'utilisateur
+        const user = new User({
+            fullName,
+            email,
+            studentId,
+            password: hashedPassword
+        });
+
+        console.log('Utilisateur créé, avant sauvegarde');
+
+        // Sauvegarde
         await user.save();
-        console.log('Utilisateur créé:', user._id);
+        console.log('Utilisateur sauvegardé avec succès');
 
-        // Générer le token
+        // Création du token
         const token = jwt.sign(
-            { user: { id: user.id } },
+            { userId: user._id },
             process.env.JWT_SECRET,
             { expiresIn: '24h' }
         );
 
-        res.json({ token });
+        console.log('Token créé avec succès');
+
+        // Réponse
+        res.status(201).json({
+            message: 'Utilisateur créé avec succès',
+            token
+        });
+
     } catch (error) {
-        console.error('Erreur serveur:', error);
-        res.status(500).json({ message: 'Erreur serveur: ' + error.message });
+        console.error('Erreur complète:', error);
+        res.status(500).json({ 
+            message: 'Erreur serveur', 
+            error: error.message,
+            stack: process.env.NODE_ENV === 'development' ? error.stack : undefined
+        });
     }
 });
 
