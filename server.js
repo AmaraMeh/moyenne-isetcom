@@ -20,11 +20,12 @@ if (process.env.NODE_ENV === 'production') {
     });
 }
 
-// CORS configuration
+// Configuration CORS plus permissive
 app.use(cors({
-    origin: process.env.NODE_ENV === 'production' 
-        ? ['https://votre-domaine.com']
-        : 'http://localhost:3000'
+    origin: '*',  // Permet toutes les origines en développement
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: false  // Changé à false pour le moment
 }));
 
 app.use(express.json());
@@ -40,6 +41,17 @@ app.get('/', (req, res) => {
             support: '/api/support/test'
         }
     });
+});
+
+// Route de test pour vérifier CORS
+app.get('/test', (req, res) => {
+    res.json({ message: 'API is working' });
+});
+
+// Log toutes les requêtes
+app.use((req, res, next) => {
+    console.log(`${req.method} ${req.path}`);
+    next();
 });
 
 // Routes

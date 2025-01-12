@@ -125,39 +125,40 @@ function insertMessage(messageDiv) {
 async function register(event) {
     event.preventDefault();
     
-    const fullName = document.getElementById('fullName').value;
-    const email = document.getElementById('email').value;
-    const studentId = document.getElementById('studentId').value;
-    const password = document.getElementById('password').value;
-    
+    const formData = {
+        fullName: document.getElementById('fullName').value,
+        email: document.getElementById('email').value,
+        studentId: document.getElementById('studentId').value,
+        password: document.getElementById('password').value
+    };
+
     try {
-        const response = await fetch('https://moyenne-isetcom.onrender.com/api/auth/register', {
+        const response = await fetch(`${API_URL}/api/auth/register`, {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
             },
-            body: JSON.stringify({
-                fullName,
-                email,
-                studentId,
-                password
-            })
+            mode: 'cors',
+            body: JSON.stringify(formData)
         });
 
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
         const data = await response.json();
+        console.log('Réponse du serveur:', data);
         
-        if (response.ok) {
-            // Stocker le token
+        if (data.token) {
             localStorage.setItem('token', data.token);
-            // Rediriger vers le dashboard
-            window.location.href = '/dashboard.html';
+            window.location.href = './dashboard.html';
         } else {
-            // Afficher l'erreur
-            showError(data.message);
+            showError('Erreur: Token non reçu');
         }
     } catch (error) {
-        console.error('Erreur:', error);
-        showError('Erreur de connexion au serveur');
+        console.error('Erreur détaillée:', error);
+        showError('Erreur de connexion au serveur: ' + error.message);
     }
 }
 
@@ -199,13 +200,11 @@ async function login(event) {
 
 // Fonction pour afficher les erreurs
 function showError(message) {
+    console.error('Erreur:', message);
     const errorDiv = document.getElementById('error-message');
     if (errorDiv) {
         errorDiv.textContent = message;
         errorDiv.style.display = 'block';
-        setTimeout(() => {
-            errorDiv.style.display = 'none';
-        }, 3000);
     }
 }
 
