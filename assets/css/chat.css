@@ -1,9 +1,7 @@
 /* Conteneur principal */
 .chat-container {
-    height: calc(100vh - 120px);
-    background: white;
-    border-radius: 1rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    @apply h-[calc(100vh-120px)] bg-white rounded-xl shadow-lg;
+    animation: fadeIn 0.5s ease-out;
 }
 
 /* Liste des conversations */
@@ -24,32 +22,25 @@
 }
 
 .conversations-list {
-    overflow-y: auto;
-    height: calc(100% - 100px);
+    @apply overflow-y-auto h-[calc(100%-100px)] divide-y divide-gray-100;
 }
 
 .conversation-item {
-    display: flex;
-    align-items: center;
-    padding: 1rem;
-    border-bottom: 1px solid #e2e8f0;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-}
-
-.conversation-item:hover {
-    background-color: #f8fafc;
+    @apply flex items-center p-4 hover:bg-gray-50 cursor-pointer transition-all duration-200;
+    animation: slideInLeft 0.3s ease-out;
 }
 
 .conversation-item.active {
-    background-color: #eff6ff;
+    @apply bg-blue-50 border-l-4 border-blue-500;
 }
 
 .conversation-item img {
-    width: 3rem;
-    height: 3rem;
-    border-radius: 50%;
-    margin-right: 1rem;
+    @apply w-12 h-12 rounded-full object-cover mr-4 border-2 border-gray-200;
+    transition: transform 0.2s ease;
+}
+
+.conversation-item:hover img {
+    transform: scale(1.05);
 }
 
 .conversation-info {
@@ -77,34 +68,29 @@
 
 /* Zone de chat */
 .chat-messages {
-    padding: 1.5rem;
-    overflow-y: auto;
+    @apply p-4 overflow-y-auto space-y-4;
+    height: calc(100vh - 280px);
 }
 
 .message {
-    display: flex;
-    margin-bottom: 1rem;
-    align-items: flex-start;
+    @apply flex items-start gap-3 max-w-[80%];
+    animation: messageSlide 0.3s ease-out;
 }
 
 .message.sent {
-    flex-direction: row-reverse;
+    @apply ml-auto flex-row-reverse;
 }
 
 .message-content {
-    max-width: 70%;
-    padding: 0.75rem 1rem;
-    border-radius: 1rem;
-    margin: 0 1rem;
-}
-
-.message.received .message-content {
-    background-color: #f1f5f9;
+    @apply rounded-2xl p-3 relative;
 }
 
 .message.sent .message-content {
-    background-color: #3b82f6;
-    color: white;
+    @apply bg-blue-500 text-white;
+}
+
+.message.received .message-content {
+    @apply bg-gray-100;
 }
 
 .message-time {
@@ -120,51 +106,43 @@
 }
 
 .message-input {
-    flex-grow: 1;
-    padding: 0.75rem;
-    border: 1px solid #e2e8f0;
-    border-radius: 1.5rem;
-    margin: 0 1rem;
+    @apply w-full px-4 py-3 rounded-full bg-gray-50 focus:ring-2 focus:ring-blue-500 focus:outline-none;
+    transition: all 0.3s ease;
 }
 
 .attachment-btn, .send-btn {
-    padding: 0.5rem;
-    color: #3b82f6;
-    border-radius: 50%;
-    transition: background-color 0.2s ease;
+    @apply p-3 rounded-full hover:bg-gray-100 transition-colors duration-200;
 }
 
-.attachment-btn:hover, .send-btn:hover {
-    background-color: #eff6ff;
+.send-btn {
+    @apply text-blue-500 hover:text-blue-600;
 }
 
-/* Modal nouveau message */
+/* Modal */
 .modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
+    @apply fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50;
+    animation: modalFade 0.3s ease-out;
 }
 
 .modal-content {
-    background: white;
-    border-radius: 1rem;
-    width: 90%;
-    max-width: 500px;
+    @apply bg-white rounded-xl shadow-xl w-full max-w-lg transform;
+    animation: modalSlide 0.3s ease-out;
 }
 
-.modal-header {
-    padding: 1rem;
-    border-bottom: 1px solid #e2e8f0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+@keyframes modalFade {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes modalSlide {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .close-modal {
@@ -186,17 +164,54 @@
 }
 
 /* Animations */
-@keyframes slideIn {
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideInLeft {
     from {
-        transform: translateY(20px);
         opacity: 0;
+        transform: translateX(-20px);
     }
     to {
-        transform: translateY(0);
         opacity: 1;
+        transform: translateX(0);
     }
 }
 
-.message {
-    animation: slideIn 0.3s ease;
+@keyframes messageSlide {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Notifications */
+.notification {
+    @apply fixed bottom-4 right-4 px-6 py-3 rounded-lg shadow-lg text-white;
+    animation: notificationSlide 0.3s ease-out;
+}
+
+.notification.success {
+    @apply bg-green-500;
+}
+
+.notification.error {
+    @apply bg-red-500;
+}
+
+@keyframes notificationSlide {
+    from {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
 } 

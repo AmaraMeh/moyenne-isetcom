@@ -54,9 +54,19 @@ function changeLanguage(lang) {
 
 // Ajouter la classe active à la langue actuelle au chargement
 document.addEventListener('DOMContentLoaded', () => {
-    const currentLang = localStorage.getItem('selectedLanguage') || 'fr';
+    // Get the saved language or default to French
+    const savedLang = localStorage.getItem('selectedLanguage') || 'fr';
+    
+    // Set the initial language
+    currentLang = savedLang;
+    document.documentElement.lang = savedLang;
+    
+    // Apply translations
+    translatePage();
+    
+    // Update language selector UI
     document.querySelectorAll('.language-option').forEach(option => {
-        option.classList.toggle('active', option.dataset.lang === currentLang);
+        option.classList.toggle('active', option.dataset.lang === savedLang);
     });
 });
 

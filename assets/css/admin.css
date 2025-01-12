@@ -1,0 +1,105 @@
+/* Admin Dashboard Styles */
+.admin-sidebar {
+    width: 250px;
+    height: 100vh;
+    background: linear-gradient(135deg, #00897b 0%, #004d40 100%);
+    padding: 2rem;
+    position: fixed;
+    left: 0;
+    top: 0;
+}
+
+.admin-logo {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.admin-nav a {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border-radius: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.admin-nav a:hover, .admin-nav a.active {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateX(5px);
+}
+
+.admin-main {
+    margin-left: 250px;
+    padding: 2rem;
+}
+
+.students-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.student-card {
+    background: white;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.student-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Modal Styles */
+.edit-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background: white;
+    padding: 2rem;
+    border-radius: 1rem;
+    width: 90%;
+    max-width: 600px;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+/* Form Styles */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.skills-editor, .achievements-editor {
+    background: #f5f5f5;
+    padding: 1rem;
+    border-radius: 0.5rem;
+}
+
+.skill-item, .achievement-item {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+/* Animation pour les actions */
+.edit-btn, .delete-btn {
+    transition: all 0.3s ease;
+}
+
+.edit-btn:hover, .delete-btn:hover {
+    transform: scale(1.05);
+} 

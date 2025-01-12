@@ -10,66 +10,107 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
+    <link href="assets/css/auth.css" rel="stylesheet" />
 </head>
 <body class="flex flex-col min-h-screen bg-gradient-to-br from-blue-50 to-blue-100">
-    <div class="container mx-auto px-4 max-w-md flex-grow flex items-center justify-center">
-        <div class="glass-card p-8 w-full" data-aos="fade-up">
-            <div class="text-center mb-8">
-                <a href="index.html">
-                    <img src="assets/img/LOGO.png" alt="ISET'COM" class="mx-auto max-w-[200px]">
-                </a>
+    <div class="auth-container">
+        <div class="auth-card">
+            <div class="auth-header">
+                <img src="assets/img/LOGO.png" alt="Logo" class="auth-logo">
+                <h1 data-translate="login_title">Connexion</h1>
+                <p class="auth-subtitle" data-translate="login_subtitle">Accédez à votre espace étudiant</p>
             </div>
 
-            <!-- Tabs -->
-            <div class="flex justify-center mb-8">
-                <button class="tab-btn active px-6 py-2 rounded-l-lg" data-tab="login" data-translate="login">
-                    Connexion
-                </button>
-                <button class="tab-btn px-6 py-2 rounded-r-lg" data-tab="signup" data-translate="signup">
-                    Inscription
-                </button>
+            <div class="tabs">
+                <button class="tab-btn active" data-tab="login" data-translate="login">Connexion</button>
+                <button class="tab-btn" data-tab="register" data-translate="signup">Inscription</button>
             </div>
 
-            <!-- Login Form -->
-            <form id="loginForm" class="tab-content active">
-                <div class="mb-4">
-                    <label class="block text-gray-700 text-sm font-bold mb-2" data-translate="email">
-                        Email
-                    </label>
-                    <input type="email" name="email" class="custom-input w-full" required>
-                </div>
-                <div class="mb-6">
-                    <label class="block text-gray-700 text-sm font-bold mb-2" data-translate="password">
-                        Mot de passe
-                    </label>
-                    <input type="password" name="password" class="custom-input w-full" required>
-                </div>
-                <button type="submit" class="custom-button w-full" data-translate="login">
-                    Se connecter
-                </button>
-            </form>
+            <!-- Login Tab -->
+            <div class="tab-content active" id="loginTab">
+                <form id="loginForm" onsubmit="login(event)">
+                    <div class="form-group">
+                        <div class="input-icon">
+                            <i class="fas fa-envelope"></i>
+                            <input type="email" id="loginEmail" required 
+                                   class="auth-input" data-translate="email_placeholder" 
+                                   placeholder="Votre email">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <div class="input-icon">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" id="loginPassword" required 
+                                   class="auth-input" data-translate="password_placeholder"
+                                   placeholder="Votre mot de passe">
+                            <i class="fas fa-eye-slash toggle-password"></i>
+                        </div>
+                    </div>
 
-            <!-- Signup Form -->
-            <form id="registerForm" class="space-y-4">
-                <div>
-                    <label for="fullName">Nom complet</label>
-                    <input type="text" id="fullName" required>
+                    <div id="error-message" class="error-message"></div>
+                    
+                    <button type="submit" class="auth-button">
+                        <span data-translate="login">Connexion</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </form>
+                <div class="text-center mt-4">
+                    <a href="#" class="register-link text-blue-500 hover:text-blue-600" data-tab="register">
+                        Pas encore de compte? Inscrivez-vous
+                    </a>
                 </div>
-                <div>
-                    <label for="email">Email</label>
-                    <input type="email" id="email" required>
+            </div>
+
+            <!-- Register Tab -->
+            <div class="tab-content" id="registerTab">
+                <form id="registerForm" onsubmit="register(event)">
+                    <div class="form-group">
+                        <div class="input-icon">
+                            <i class="fas fa-user"></i>
+                            <input type="text" id="fullName" required 
+                                   class="auth-input" placeholder="Nom complet">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="input-icon">
+                            <i class="fas fa-envelope"></i>
+                            <input type="email" id="registerEmail" required 
+                                   class="auth-input" placeholder="Email">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="input-icon">
+                            <i class="fas fa-id-card"></i>
+                            <input type="text" id="studentId" required 
+                                   class="auth-input" placeholder="Numéro d'étudiant">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="input-icon">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" id="registerPassword" required 
+                                   class="auth-input" placeholder="Mot de passe">
+                            <i class="fas fa-eye-slash toggle-password"></i>
+                        </div>
+                    </div>
+
+                    <div id="register-error-message" class="error-message"></div>
+
+                    <button type="submit" class="auth-button">
+                        <span>S'inscrire</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </form>
+                <div class="text-center mt-4">
+                    <a href="#" class="login-link text-blue-500 hover:text-blue-600" data-tab="login">
+                        Déjà un compte? Connectez-vous
+                    </a>
                 </div>
-                <div>
-                    <label for="studentId">ID Étudiant</label>
-                    <input type="text" id="studentId" required>
-                </div>
-                <div>
-                    <label for="password">Mot de passe</label>
-                    <input type="password" id="password" required>
-                </div>
-                <div id="error-message" class="error-message" style="display: none;"></div>
-                <button type="submit">S'inscrire</button>
-            </form>
+            </div>
         </div>
     </div>
 
